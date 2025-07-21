@@ -65,11 +65,27 @@ Method 2: Specifying exact size (desired height and width in pixels)
 
 cv2.resize(src_image, dsize=desired_image_size, interpolation)
 
-Method 3: User Selective Cropping with ROI
+Method 3: Maintaining aspect ratio (using dsize)
+
+Formula:
+shape[height, width]
+
+desired_width / cropped_region.shape[1] (width) multipled to cropped_regiion.shape[0] (height)
+
+Method 4: User Selective Cropping with ROI
 
 roi = cv2.selectROI("Select Region of Interest", img, False)
 
 cropped_img = img[int(roi[1]):int(roi[1]+roi[3]), 
                     int(roi[0]):int(roi[0]+roi[2])]
 
+
+Flipping Images
+
+cv.flip(src_image, flipCode)
+
+flipCode
+1. 0 - flipping around the x-axis and positive value (horizontally)
+2. 1 - flipping around the y-axis (vertically)
+3. -1 - flipping around both axes (both)
 
