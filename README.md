@@ -43,3 +43,33 @@ plt.imshow(filename, cmap="gray") - displays the image in grayscale
 
 
 Matplotlib uses RGB format, OpenCV uses BGR format, so reverse the channels of the image so that Matplotlib can display the actual color
+
+
+02 Basic Image Manipulation
+
+img[row, column] - to access pixel in a numpy matrix
+
+img[start_row:end_row, start_col, end_col] - more efficient for accessing multiple pixels, end is excluded, can be used for cropping
+
+Resizing Images
+
+Method 1: Scaling factor using fx, fy
+
+cv2.resize(src_image, desired_image_size, fx=[x-value], fy=[y-value])
+
+positive values - increase image size
+
+negative values - decrease image size
+
+Method 2: Specifying exact size (desired height and width in pixels)
+
+cv2.resize(src_image, dsize=desired_image_size, interpolation)
+
+Method 3: User Selective Cropping with ROI
+
+roi = cv2.selectROI("Select Region of Interest", img, False)
+
+cropped_img = img[int(roi[1]):int(roi[1]+roi[3]), 
+                    int(roi[0]):int(roi[0]+roi[2])]
+
+
