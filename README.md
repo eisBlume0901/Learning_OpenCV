@@ -26,6 +26,15 @@ code
 
 Go to hue-saturation-value.jpeg to see the visual representation
 
+cv2.namedWindow(name) - create a window with the given name
+
+cv2.imshow(cv2.namedWindow(name), image) - display the image in a named window
+
+cv2.waitKey(0) - waiting for a key press in indefinite time
+
+cv2.destroyWindow(cv2.namedWindow(name)) - to close the window
+
+
 Matplotlib 
 
 plt.imshow(filename) - displays the image in a plot

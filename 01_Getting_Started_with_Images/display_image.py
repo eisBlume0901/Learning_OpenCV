@@ -1,8 +1,8 @@
 import cv2
 import matplotlib.pyplot as plt
 
-cb_img = cv2.imread("checkerboard_color.png")
-coke_img = cv2.imread("coca-cola-logo.png")
+cb_img = cv2.imread("01_Getting_Started_with_Images/checkerboard_color.png")
+coke_img = cv2.imread("01_Getting_Started_with_Images/coca-cola-logo.png")
 
 # Use matplotlib imshow()
 plt.imshow(cb_img)
@@ -25,6 +25,7 @@ cv2.destroyWindow(window2)
 window3 = cv2.namedWindow("w3")
 cv2.imshow(window3, cb_img)
 cv2.waitKey(0)
+
 cv2.destroyWindow(window3)
 
 window4 = cv2.namedWindow("w4")
@@ -34,7 +35,7 @@ while Alive:
     # Use OpenCV imshow(), display until 'q' key is pressed
     cv2.imshow(window4, coke_img)
     keypress = cv2.waitKey(1)
-    if keypress == ord('q'):
+    if keypress == ord('q'): #ord() unicode code point for a given character for keypresses
         Alive = False
 cv2.destroyWindow(window4)
 
