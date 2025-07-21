@@ -51,7 +51,7 @@ img[row, column] - to access pixel in a numpy matrix
 
 img[start_row:end_row, start_col, end_col] - more efficient for accessing multiple pixels, end is excluded, can be used for cropping
 
-Resizing Images
+Resizing Images (interpolation default value is LINEAR)
 
 Method 1: Scaling factor using fx, fy
 
@@ -64,6 +64,14 @@ negative values - decrease image size
 Method 2: Specifying exact size (desired height and width in pixels)
 
 cv2.resize(src_image, dsize=desired_image_size, interpolation)
+
+Interpolation Codes
+
+For enlarging an image, use INTER_LINEAR and INTER_CUBIC
+
+For shrinking an image, use INTER_AREA
+
+INTER_LINEAR is default option for resize which combines good visual results and time performance
 
 Method 3: Maintaining aspect ratio (using dsize)
 
@@ -85,7 +93,7 @@ Flipping Images
 cv.flip(src_image, flipCode)
 
 flipCode
-1. 0 - flipping around the x-axis and positive value (horizontally)
-2. 1 - flipping around the y-axis (vertically)
-3. -1 - flipping around both axes (both)
+1. 0 - flipping around the x-axis and positive value (vertically)
+2. 1 - flipping around the y-axis (horizontally)
+3. -1 - flipping around both axes (both flipped)
 
