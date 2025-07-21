@@ -97,3 +97,37 @@ flipCode
 2. 1 - flipping around the y-axis (horizontally)
 3. -1 - flipping around both axes (both flipped)
 
+
+03_Image_Annotation
+
+Drawing a Line
+
+img = cv2.line(img, pt1, pt2, color[, thickness[, lineType[, shift]]])
+
+pt1 = (x1, y1)
+
+pt2 = (x2, y2)
+
+color = rgb format
+
+lineType
+
+1. FILLED
+2. LINE_4 (4-connected line) - (horizontal and vertical neighbors)
+3. LINE_8 (8-connected line) - (includes diagonal neighbors for smoother lines)
+4. LINE_AA (anti-aliased line) - best for reduced jagged edges
+
+
+Drawing a Circle
+
+img = cv2.circle(img, center, radius, color[, thickness[, lineType[, shift]]])
+
+Drawing a Rectangle
+
+img = cv2.rectangle(img, pt1, pt2, color[, thickness[, lineType[, shift]]])
+
+pt1 = top left (x1, y1) y down 
+
+pt2 = bottom right (x2, y2) y up
+
+Inserting a Text
