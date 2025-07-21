@@ -130,4 +130,8 @@ pt1 = top left (x1, y1) y down
 
 pt2 = bottom right (x2, y2) y up
 
-Inserting a Text
+Adding Text
+
+img = cv2.putText(img, text, org, fontFace, fontScale, color[, thickness[, lineType[, bottomLeftOrigin]]])
+
+org - bottom left corner of the text string in the image
