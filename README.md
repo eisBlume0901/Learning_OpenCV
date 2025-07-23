@@ -41,6 +41,16 @@ plt.imshow(filename) - displays the image in a plot
 
 plt.imshow(filename, cmap="gray") - displays the image in grayscale
 
+plt.subplot(rowcolumnsubplot)
+
+plt.subplot(141) = 1 row, 4 columns, subplot 1
+
+plt.figure(figsize=[width, height])
+ 
+Rule for setting properly figsize for subplots
+1. For a 2x2 grid (4 subplots), try figsize=[8, 8] (square ratio).
+2. For a 3x2 grid (6 subplots, 3 rows, 2 columns), try figsize=[12, 12] or figsize=[12, 8] (taller if you want more vertical space).
+3. For a 1x3 grid (3 subplots, 1 row and 3 columns), try figsize=[12, 4] (wider for more horizontal space).
 
 Matplotlib uses RGB format, OpenCV uses BGR format, so reverse the channels of the image so that Matplotlib can display the actual color
 
@@ -122,6 +132,8 @@ Drawing a Circle
 
 img = cv2.circle(img, center, radius, color[, thickness[, lineType[, shift]]])
 
+thickness - positive value create a thick border, negative value will fill the circle
+
 Drawing a Rectangle
 
 img = cv2.rectangle(img, pt1, pt2, color[, thickness[, lineType[, shift]]])
@@ -134,4 +146,65 @@ Adding Text
 
 img = cv2.putText(img, text, org, fontFace, fontScale, color[, thickness[, lineType[, bottomLeftOrigin]]])
 
+fontScale - positive values will be seen in a positive axis, negative values will be seen in negative axis
 org - bottom left corner of the text string in the image
+
+04 Basic Image Enhacement using Mathematical Operations
+
+type() - overall type of an object
+
+.dtype - data type of the elements inside the array
+
+Add (brighten), subtract (darken) - increasing / decreasing value of each pixel by the same amount 
+
+cv2.add(img_rgb, np.ones(img_rgb.shape, dtype="uint8") * numberToAdd)
+
+cv2.subtract(img_rgb, np.ones(img_rgb.shape, dtype="uint8") * numberToSubtract)
+
+
+np.ones - creates an array that has value of one
+
+Multiply - contrast, multiply constant values to intensify values of the pixel (larger = darker, smaler = brighter contrast [should be < 1])
+
+img_rgb_darker = np.uint8(cv2.multiply(np.float64(img_rgb), np.ones(img_rgb.shape) * factorSmallerThan1 ))
+
+img_rgb_brighter = np.uint8(np.clip (cv2.multiply(np.float64(img_rgb), np.ones(img_rgb.shape) * factorGreaterThan1 ), 0, 255))
+
+
+Binary Image
+
+Thresholding - process used to create Binary Images from grayscale images
+
+Best Explanation: https://youtu.be/BA00xTv5-Z4
+
+Best Visualization: https://youtu.be/En2mqnNkX8g
+
+retval, img_thresh = cv2.threshold( img_in_grayscale, thresh, maxval, type[, dst] )
+
+Threshold Types
+
+1. THRESH_BINARY
+2. THRESH_BINARY_INV
+3. THRESH_TRUNC
+4. THRESH_TOZERO
+5. THRESH_TOZERO_INV
+6. THRESH_MASK
+7. THRESH_OTSU
+8. THRESH_TRIANGLE
+
+Suggested to use adaptive thresholding for optimization and to capture the image outline well.
+
+dst = cv.adaptiveThreshold( img, maxValue, adaptiveMethod, thresholdType, blockSize, C[, dst] )
+
+maxValue - non-zero value asigned tot he pixels for which the condition is satisfied
+
+adaptiveMethod - ADAPTIVE_THRESH_MEAN_C, ADAPTATIVE_THRESH_GAUSSIAN_C
+
+thresholdType - referenced above (8 types of Thresh Types)
+
+blockSize - size of a pixel neighborhood used to calculate a threshold value for the pixel (odd values, 3, 5, 7, and so forth)
+
+c - constant subtracted from mean or weighted mean (normally, positive but can be zero or negative)
+
+
+
