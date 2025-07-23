@@ -207,4 +207,29 @@ blockSize - size of a pixel neighborhood used to calculate a threshold value for
 c - constant subtracted from mean or weighted mean (normally, positive but can be zero or negative)
 
 
+Image Masking with Bitwise Operators
+
+dst = cv2.bitwise_and( img_21, img_2[, dst[, mask]] )
+
+- 0 AND 0 → 0 (black)
+- 0 AND 255 → 0 (black)
+- 255 AND 0 → 0 (black)
+- 255 AND 255 → 255 (white)
+
+dst = cv2.bitwise_or( img_21, img_2[, dst[, mask]] )
+
+- 0 OR 0 → 0 (black)
+- 0 OR 255 → 255 (white)
+- 255 OR 0 → 255 (white)
+- 255 OR 255 → 255 (white)
+
+dst = cv2.bitwise_xor( img_21, img_2[, dst[, mask]] )
+
+(opposite of and results)
+- 0 XOR 0 → 0 (black)
+- 0 XOR 255 → 255 (white)
+- 255 XOR 0 → 255 (white)
+- 255 XOR 255 → 0 (black)
+
+Bitwise Operators and Thresholding can be combined for Image Masking
 
