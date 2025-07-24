@@ -233,3 +233,29 @@ dst = cv2.bitwise_xor( img_21, img_2[, dst[, mask]] )
 
 Bitwise Operators and Thresholding can be combined for Image Masking
 
+05 Accessing the Camera
+
+Go to Folder 05_Accessing_the_Camera for details
+
+06 Video Writing
+
+cap = cv2.VideoCapture(source) - source can accept mp4, YouTube Video, camera
+
+cap.isOpened() - returns true if video capturing has been initialized already
+
+retval, image = cap.read() - grabs, decodes and returns the next video frame (retval = returns boolean if a frame has successfully read, image = returns actual image data)
+
+VideoWriter object = cv.VideoWriter(filename, fourcc, fps, frameSize )
+
+FourCC (Four Character Code) - helps the device or platform understand which codec to use to play the video.
+
+FourCC codes
+- PIM1 - MPEG-1 codec - 
+- MJPG - Motion-JPEG codec - High compression ratio, good quality for still imaegs, can be slow for video
+- XVID - Xvid codec - Good compression ratio, high quality, wide platform compatibility
+- DIVX - DivX codec - High compression ratio, good quality, wide platform compatibility
+- WMV3 - Windows Media Video 3 codec - Good compression ratio, high quality, specific to windows media player
+
+fps - frame rates per second
+
+framesize - size of the video frames
