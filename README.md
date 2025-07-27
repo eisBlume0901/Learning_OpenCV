@@ -196,7 +196,7 @@ Suggested to use adaptive thresholding for optimization and to capture the image
 
 dst = cv.adaptiveThreshold( img, maxValue, adaptiveMethod, thresholdType, blockSize, C[, dst] )
 
-maxValue - non-zero value asigned tot he pixels for which the condition is satisfied
+maxValue - non-zero value asigned to the pixels for which the condition is satisfied
 
 adaptiveMethod - ADAPTIVE_THRESH_MEAN_C, ADAPTATIVE_THRESH_GAUSSIAN_C
 
@@ -259,3 +259,11 @@ FourCC codes
 fps - frame rates per second
 
 framesize - size of the video frames
+
+07 Image Filtering using Edge Detection
+
+Canny Detection - https://docs.opencv.org/4.x/da/d22/tutorial_py_canny.html
+
+cv.Canny(image/frame, threshold1, threshold2)
+
+Corner Detection - https://docs.opencv.org/4.x/d4/d8c/tutorial_py_shi_tomasi.html
